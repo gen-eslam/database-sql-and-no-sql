@@ -1,0 +1,21 @@
+create or REPLACE DIRECTORY dir2 as 'D:\';
+GRANT read ,write on DIRECTORY dir2 to hr;
+create user user1 identified by user1;
+
+create user test_user1 IDENTIFIED by test_user2;
+create user test_user2 IDENTIFIED by test_user1;
+GRANT create table, create view to test_user1 with ADMIN OPTION;
+GRANT CREATE SESSION TO test_user1 with ADMIN OPTION;
+GRANT SELECT ON HR.DEPARTMENTS TO TEST_USER1;
+GRANT select on hr.departments TO user2;
+GRANT select on hr.departments To userl WITH GRANT OPTION;
+GRANT select on hr.departments TO PUBIIC;
+grant select on departments to test_user1 with grant option;
+CREATE ROLE hrmgr_role;
+GRANT create table, create sequence, create view TO hrmgr _role;
+GRANT select , update, delete, insert ON hr. employees To hrmgr_role;
+GRANT hrmgr_role TO userl;
+SET ROLE hrmgr_role;
+SELECT * FROM hr.employees ;
+REVOKE CREATE TABLE FROM USER2;
+ALTER USER USER1 IDENTIFIED BY NEWPASS;
